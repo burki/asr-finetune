@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --mail-type=fail,end
-#SBATCH --job-name="train_tiny"
-#SBATCH --time=02:00:00
-#SBATCH --mem=64G  #32
+#SBATCH --job-name="tiny_debug"
+#SBATCH --time=00:30:00
+#SBATCH --mem=32G  #32
 
 #SBATCH --partition=gpu
 #SBATCH --qos=standard
@@ -12,9 +12,9 @@
 ###SBATCH --exclusive
 #SBATCH --tasks-per-node=1  ### ensure that each Ray worker runtime will run on a separate node
 #SBATCH --cpus-per-task=4  ### cpus and gpus per node
-#SBATCH --gres=gpu:2 ##change num_GPU below to same number
+#SBATCH --gres=gpu:1 ##change num_GPU below to same number
 
-num_gpus=2
+num_gpus=1
 
 # automaticall set-up user mail
 scontrol update job $SLURM_JOB_ID MailUser=$USER@zedat.fu-berlin.de
@@ -78,5 +78,5 @@ done
 
 echo "STARTING python command"
 
-cd finetuning
+cd finetune
 python -u train.py -c configs/tiny_debug.config --storage_path /scratch/$USER/ray_results
