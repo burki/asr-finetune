@@ -1,11 +1,16 @@
-# Installation 
+# Installation from scratch
 
 1. Crate a folder of your choice in you $HOME HPC directory.
 2. Pull the repo into the folder.
-3. Install packages in the [requirements.txt](requirements.txt).
-   Option 1: Conda. `conda create --name <env_name> --file requirements.txt`
-   Option 2: Create a python environment and install with pip: `pip install -r requirements.txt within the environment`
+3. Install packages in the [requirements.txt](requirements.txt) in your favorite environment.
+   With Conda (tested): 
+   - `conda create -n "finetune" python=3.12.7 ipython`  change "finetune" to your environment name of choice
+   - navigate into the asr-finetune-main folder and `pip install -r requirements.txt`
 4. Add the data you want to use in the folder [data](data) in your home directory. 
+
+*Note: * If you were already able to run an experiment, you may use the existing environment. However, you need to 
+update ray. First `pip uninstall -y ray` and then `pip install -U "ray[data,train,tune,serve]"`. 
+Ray version `>=2.40.0` fixes the data loading bug for big data.
 
 # Submit a job
 
@@ -34,6 +39,20 @@ To track the progress of your experiment, log into you HPC account forwarding po
 `ssh -L 16006:127.0.0.1:6007 USER@curta.zedat.fu-berlin.de`
 
 Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/` where output_tag is again the one from the config file.
+
+
+# Update Notes
+
+Compared to the previous repo, I added the following options in the `.config` file:
+
+- `metric_to_optimize` which defines which metric to use to discard bad trials (previously: `eval_loss` now defaults to
+`eval_wer`)
+- `hyperparameters` to finetune can now be set in the config as a list of string, e.g. `learning_rate,weight_decay` only
+finetunes learning rate and weight decay. Add `warmup_steps` and specify
+`max_warmup_steps` to add it for the finetuning or just look for optimal `learning_rate`.
+- `resume_training` flag for resuming training. Should continue where you left off. *Important*: Requires exactly the 
+same settings as the initial run.
+- `run_on_local_machine` flag for runnning on local machine. Useful for debugging.
 
 # Useful formulas
 

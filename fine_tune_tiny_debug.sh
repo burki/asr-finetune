@@ -1,21 +1,20 @@
 #!/bin/bash
-
 #SBATCH --mail-type=fail,end
 #SBATCH --job-name="train_tiny"
 #SBATCH --time=02:00:00
 #SBATCH --mem=64G  #32
 
+#SBATCH --partition=gpu
+#SBATCH --qos=standard
+###SBATCH --nodelist=g007
+
 #SBATCH --nodes=1
 ###SBATCH --exclusive
 #SBATCH --tasks-per-node=1  ### ensure that each Ray worker runtime will run on a separate node
-#SBATCH --cpus-per-task=32  ### cpus and gpus per node
-#SBATCH --gres=gpu:4 ##change num_GPU below to same number
-num_gpus=4
+#SBATCH --cpus-per-task=4  ### cpus and gpus per node
+#SBATCH --gres=gpu:2 ##change num_GPU below to same number
 
-#SBATCH --partition=gpu
-#SBATCH --qos=standard
-
-###SBATCH --nodelist=g007
+num_gpus=2
 
 # automaticall set-up user mail
 scontrol update job $SLURM_JOB_ID MailUser=$USER@zedat.fu-berlin.de
@@ -27,7 +26,9 @@ module load CUDA/12.0.0
 nvidia-smi
 nvcc --version
 
-echo "Temp dir $TMPDIR"
+export TMPDIR=/scratch/$USER/tmp
+mkdir -p $TMPDIR
+echo "Temp dir $TMPDIR created"
 
 # Getting the node names
 nodes=$(scontrol show hostnames "$SLURM_JOB_NODELIST")
