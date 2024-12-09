@@ -2,7 +2,7 @@
 #SBATCH --mail-type=fail,end
 #SBATCH --job-name="tiny_debug"
 #SBATCH --time=00:30:00
-#SBATCH --mem=32G  #32
+#SBATCH --mem=64G  #32
 
 #SBATCH --partition=gpu
 #SBATCH --qos=standard
