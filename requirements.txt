@@ -7,7 +7,6 @@ evaluate==0.4.3
 safetensors==0.4.5
 transformers==4.46.3
 configargparse==1.7
-ray==2.39.0
 sympy==1.13.1
 datasets==3.1.0
 soundfile==0.12.1
