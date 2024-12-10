@@ -154,14 +154,14 @@ if __name__ == "__main__":
     if args.run_on_local_machine:
         ray.init()
     else:
-        # ray.init("auto")
+        ray.init("auto")
  # ray.init("auto")
-    # Could help to connect to head note
-        ip_head = os.getenv("ip_head")
-        if not ip_head:
-            raise RuntimeError("Head node address not found in environment variables.")
-        ray.init(address=ip_head)
-        username = os.getenv("USER")
+    # Could help to connect to head note if connection fails frequently
+    #     ip_head = os.getenv("ip_head")
+    #     if not ip_head:
+    #         raise RuntimeError("Head node address not found in environment variables.")
+    #     ray.init(address=ip_head)
+    #     username = os.getenv("USER")
 
     logger.info("Ray Nodes info: %s", ray.nodes())
     logger.info("Ray Cluster Resources: %s", ray.cluster_resources())

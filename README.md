@@ -45,11 +45,12 @@ Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/` where output_ta
 
 Compared to the previous repo, I added the following options in the `.config` file:
 
+- `return_timestamps` flag for model to return timestamps
 - `metric_to_optimize` which defines which metric to use to discard bad trials (previously: `eval_loss` now defaults to
 `eval_wer`)
-- `hyperparameters` to finetune can now be set in the config as a list of string, e.g. `learning_rate,weight_decay` only
-finetunes learning rate and weight decay. Add `warmup_steps` and specify
-`max_warmup_steps` to add it for the finetuning or just look for optimal `learning_rate`.
+- `hyperparameters` to finetune can now be set in the config as a list of string, e.g. set to 
+`learning_rate,weight_decay` for only finetuning learning rate and weight decay. Add `warmup_steps` and specify
+`max_warmup_steps` (must be < `save_steps`) to add it for the finetuning or just look for optimal `learning_rate`.
 - `resume_training` flag for resuming training. Should continue where you left off. *Important*: Requires exactly the 
 same settings as the initial run.
 - `run_on_local_machine` flag for runnning on local machine. Useful for debugging.
@@ -62,3 +63,8 @@ for undertanding the tensorboard loggings)
 total_Gradient_steps = round_up(length_train_set / per_device_train_batch_size) * num_epochs
 
 iterations = round_up(total_Gradient_steps / save_steps)
+
+# TODO
+
+- [ ] increase CPU efficiency
+- [ ] get ray dashboard running
