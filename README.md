@@ -6,7 +6,7 @@
    With Conda (tested): 
    - `conda create -n "finetune" python=3.12.7 ipython`  change "finetune" to your environment name of choice
    - navigate into the asr-finetune-main folder and `pip install -r requirements.txt`
-4. Add the data you want to use in the folder [data](data) in asr-finetune directory. 
+4. Add the data you want to use in the folder [data](data) in the asr-finetune directory. 
 
 *Note: * If you were already able to run an experiment, you may use the existing environment. However, you need to 
 update ray. First `pip uninstall -y ray` and then `pip install -U "ray[data,train,tune,serve]"`. 
