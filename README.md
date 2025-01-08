@@ -38,7 +38,7 @@ for an example. You need to specify also a storage path under `args.storage_path
 To track the progress of your experiment, log into you HPC account forwarding port 6007 onto you local machine through
 `ssh -L 16006:127.0.0.1:6007 USER@curta.zedat.fu-berlin.de`
 
-Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/` where output_tag is again the one from the config file.
+Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/ --bind_all` where output_tag is again the one from the config file.
 
 
 # Update Notes
