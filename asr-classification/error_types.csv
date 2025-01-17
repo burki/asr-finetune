@@ -1,0 +1,37 @@
+Fehlerkategorie,Fehlertyp,Definition,Relevanz,Beispiel,tag
+"fehlende einzelne Wörter (bedeutungslos)
+missing single words (meaningless)",Deletion,"ASR** erkennt/transkribiert einzelne Wörter nicht, die jedoch für das Verständnis des Gesprochenen nur eine geringe Relevanz haben, bspw. Artikel oder Füllwörter.",2,"Artikel vor einem Nomen/Substantiv, z.B. „die"" Frau oder ""ein"" Mann.",d1
+"fehlende einzelne Wörter (bedeutungsvoll)
+missing single words (meaningful)",Deletion,"ASR erkennt einzelne, für das Verständnis relevante Wörter (i.d.R. Nomen und Verben) nicht und lässt diese im Transkript aus.",8,,d2
+"fehlende Teilsätze
+missing sub-sentences",Deletion,ASR erkennt/transkribiert einen Teil eines gesprochenen Satzes nicht. Insbesondere zu Anfang einer Audiodatei (in den ersten Sekunden der Aufzeichnung) tritt der Fehler auf. Ursache ist vermutlich der zu Aufzeichnungsbeginn fehlende inhaltliche Kontext.,8,,d3
+"ähnlich klingende Wörter oder Wortgruppen
+
+similar-sounding words or word groups",Substitution,ASR erkennt eine Wortgruppe nicht oder nur teilweise richtig. Dieser Fehler verändert meist den Inhalt des Gesprochenen.,8,"ASR: ""Canada societal impact""
+ORIGINAL: ""kind of societal impact""",s1
+"falsch verstandene Eigennamen
+misunderstood proper nouns",Substitution,"ASR erkennt historische Begriffe, Orte und Eigennamen nicht korrekt und fügt stattdessen falsche Wörter ein.",9,"ASR: ""Facebook""
+ORIGINAL: ""Feldpost""
+ASR: ""Kenia""
+ORIGINAL: ""Genscher""",s2
+"falsche Wortendungen / gleicher Wortstamm
+word endings wrong / same word stem",Substitution,ASR erkennt nur einen Teil eines gesprochenen Wortes (den Wortstamm) korrekt.,4,"ASR: ""Augenschein""
+ORIGINAL: ""augenscheinlich""",s3
+"Rechtschreibfehler
+spelling mistakes",Substitution,"ASR transkribiert Wörter nicht korrekt gemäß der aktuellen Rechtschreibung, z.B. Groß-/Kleinschreibungsfehler oder die Verwendung der alten Rechtschreibung bei einzelnen Wörtern.",2,,s4
+"falsche Sprecherzuordnung
+wrong speaker assignment",Substitution,ASR weist einem transkribierten Satz nicht den korrekten Sprecher zu. Dieser Fehler tritt insbesondere bei parallelem bzw. überlappendem Sprechen auf (schnelle Sprecherwechsel).,2,,s5
+"Glättung Grammatik
+Smoothing",Substitution,"ASR transkribiert einen grammatikalisch falsch gesprochenen Satz korrekt, d.h. verändert den gesprochenen Satzbau. D.h. aus dem gesprochenen unvollständigen Satz wird ein neuer vollständiger Satz konstruiert. Diese Vereinfachung ist inhaltlich nicht falsch, lässt aber Gesprochenes weg und ist nicht wortgetreu.",5,"ASR: ""Ja also da war ich auch schon als Schüler mit meiner Klasse.""
+ORIGINAL: ""Ja also da war ich schon, waren wir... ja..., da war ich auch schon als Schüler mit meiner Klasse.""",s6
+"Glättung Dialekt/Akzent
+Smoothing",Substitution,ASR transformiert die mit Dialekt/Akzent gesprochene Sprache ins Hochdeutsche.,3,"ASR: ""Ich weiß, ich bin ein waschechter Berliner.""
+ORIGINAL: ""Ick wes, ick bin en waschechter Berliner.""",s7
+"Glättung Füllwörter
+Smoothing",Substitution,"ASR ignoriert Füllwörter (""hm"", ""ähm"") sowie Wort-Wiederholungen (wie Stottern) bzw. abgebrochene Sätze.",1,"ASR: ""Ich bin ein Berliner.""
+ORIGINAL: ""Ähm, ich bin ein, hm, Berliner.""
+ASR: ""Wir wohnten damals in Berlin-Köpenick. In einer Hütte war es ja eigentlich.""
+Original: ""Wir wohnten damals in Berlin-Köpenick. In_ in_. Äh, na, eine Hütte war es ja eigentlich gewesen.""",s8
+"Erfundene, halluzinierte Wörter
+Made-up, hallucinated words",Insertion,"ASR transkribiert nicht gesprochene Wörter, die völlig kontextfrei sind und deren Vorhandensein nicht durch ähnlich klingende Wörter in der Aufzeichnung erklärt werden können. Ursprünglich stammen diese halluzinierten Wörter aus den Trainingsdaten. 
+Das Phänomen tritt öfters bei Phasen längerer Stille in der Aufzeichnung (z.T. verbunden mit Rauschen) auf.",10,,i1
