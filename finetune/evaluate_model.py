@@ -235,6 +235,8 @@ if __name__ == "__main__":
                                                                      test_size=args.test_split, seed=args.random_seed,
                                                                      evaluate = True, debug = args.debug)
 
+    ray.init('auto')
+
     logger.info('len_eval_set: %s',len_eval_set)
 
     config_ = 'Parsed args:\n{}\n\n'.format(pprint.pformat(args.__dict__))

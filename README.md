@@ -6,7 +6,7 @@
    With Conda (tested): 
    - `conda create -n "finetune" python=3.12.7 ipython`  change "finetune" to your environment name of choice
    - navigate into the asr-finetune-main folder and `pip install -r requirements.txt`
-4. Add the data you want to use in the folder [data](data) in your home directory. 
+4. "cp -r data_example/ data/" and add the datasets you want to use in the folder [data](data) in the asr-finetune directory. 
 
 *Note: * If you were already able to run an experiment, you may use the existing environment. However, you need to 
 update ray. First `pip uninstall -y ray` and then `pip install -U "ray[data,train,tune,serve]"`. 
@@ -38,7 +38,7 @@ for an example. You need to specify also a storage path under `args.storage_path
 To track the progress of your experiment, log into you HPC account forwarding port 6007 onto you local machine through
 `ssh -L 16006:127.0.0.1:6007 USER@curta.zedat.fu-berlin.de`
 
-Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/` where output_tag is again the one from the config file.
+Run `tensorboard --logdir /scratch/USER/ray_results/output_tag/ --bind_all` where output_tag is again the one from the config file.
 
 
 # Update Notes
