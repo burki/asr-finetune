@@ -3,3 +3,7 @@ data
 /.venv
 /venv
 /asr-finetune_VENV
+
+/asr-classification/old
+/asr-classification/.ipynb_checkpoints
+.idea
