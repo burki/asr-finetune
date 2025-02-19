@@ -32,7 +32,7 @@ def normalize(text):
 
 # Load dataset (CSV or JSON fallback)
 finetuned = False
-model_tag = 'small_eg_fzh_combined_v2_transformers' if finetuned else 'small_eg_fzh_combined_v2_whisper'
+model_tag = 'small_pk_dec_error_types' if finetuned else 'small_eg_fzh_combined_v2_whisper'
 
 try:
     data = pd.read_csv(model_tag + '_error_types_0.csv')
